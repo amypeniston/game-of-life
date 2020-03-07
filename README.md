@@ -176,3 +176,10 @@ animation.writers.list()
 
 >>> ['ffmpeg', 'ffmpeg_file', 'imagemagick', 'imagemagick_file', 'html'] # For example
 ```
+
+## Conway's Original Rules
+
+* **Underpopulation**: If a live cell has fewer than 2 live neighbors, it dies
+* **Stasis**: If a live cell has 2 or 3 live neighbors, it lives
+* **Overpopulation**: If a live cell has more than 3 live neighbors, it dies
+* **Reproduction**: If a dead cell has exactly 3 live neighbors, it becomes a live cell
