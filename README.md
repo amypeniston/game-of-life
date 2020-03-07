@@ -66,9 +66,9 @@ To view the created animation, check the project directory for `life.gif` and op
 There are an assortment of additional command line arguments that enable you to generate different universes. For example, you can change the [color scheme](https://matplotlib.org/3.1.0/gallery/color/colormap_reference.html?highlight=colormap) by running:
 
   
-```python
+```
 
-python3 life.py \-\-cmap "Greens"
+python3 life.py --cmap "Greens"
 
 ```
 
