@@ -83,19 +83,22 @@ python3 life.py --help
 ![Beacon](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/beacon.gif)
 
 
-![Glider]()
+![Glider](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/glider.gif)
 
 
-![Infinite]()
+![Solid Square](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/solid_square.gif)
 
 
-![Toad]()
+![Infinite](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/infinite.gif)
 
 
-![Pentadecathlon]()
+![Toad](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/toad.gif)
 
 
-![Mayhem]()
+![Pentadecathlon](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/pentadecathlon.gif)
+
+
+![Mayhem](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/mayhem.gif)
 
 ## Saving Animations
 
