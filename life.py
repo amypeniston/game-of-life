@@ -4,6 +4,29 @@ import matplotlib.animation as animation
 import numpy as np
 import argparse
 
+SEEDS = {
+    "solid_cube": np.array([
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1]
+    ]),
+    "glider": np.array(
+        [[0, 0, 1],
+        [1, 0, 1],
+        [0, 1, 1]
+    ]),
+    "infinite": np.array([
+        [1, 1, 1, 0, 1],
+        [1, 0, 0, 0, 0],
+        [0, 0, 0, 1, 1],
+        [0, 1, 1, 0, 1],
+        [1, 0, 1, 0, 1],
+    ])
+}
+
 def generation(universe):
     new_universe = np.copy(universe)
 
@@ -30,48 +53,52 @@ def apply_rules(i, j, universe):
         return 1
     return universe[i, j]
 
+
+def place_seed(universe, seed):
+    # Get height and width of universe
+    ny = universe.shape[0]
+    nx = universe.shape[1]
+
+    # Determine midpoint of universe
+    x_mid, y_mid = int(nx/2), int(ny/2)
+
+    # Determine where to place top left corner of seed
+    i = x_mid - int(seed.shape[0]/2)
+    j = y_mid - int(seed.shape[1]/2)
+
+    # Place seed (top left corner at i, j)
+    for y in range(seed.shape[0]):
+        for x in range(seed.shape[1]):
+            universe[(i+y)%ny, (j+x)%nx] = seed[y, x]
+
+    return universe   
+
 def random_universe(universe_size):
 
     # Initialize an empty universe
     universe = np.zeros(universe_size)
 
     # Set up an infinite seed
-    seed_array = np.array([
-        [1, 1, 1, 0, 1],
-        [1, 0, 0, 0, 0],
-        [0, 0, 0, 1, 1],
-        [0, 1, 1, 0, 1],
-        [1, 0, 1, 0, 1],
-    ])
+    seed = SEEDS["infinite"]
 
-    seed_array = np.array([
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1]
-    ])
+    # ny = universe.shape[0]
+    # nx = universe.shape[1]
 
-    ny = universe.shape[0]
-    nx = universe.shape[1]
+    # # Determine midpoint of the universe
+    # x_mid, y_mid = int(nx/2), int(ny/2)
 
-    # Determine midpoint of the universe
-    x_mid, y_mid = int(nx/2), int(ny/2)
+    # # Determine where to place top left corner of seed
+    # i = x_mid - int(seed.shape[0]/2)
+    # j = y_mid - int(seed.shape[1]/2)
 
-    # Determine top left corner position
-    i = x_mid - int(seed_array.shape[0]/2)
-    j = y_mid - int(seed_array.shape[1]/2)
+    # # Place seed (top left corner at i, j)
+    # for y in range(seed.shape[0]):
+    #     for x in range(seed.shape[1]):
+    #         universe[(i+y)%ny, (j+x)%nx] = seed[y, x]
 
-    #x_seed_end, y_seed_end = x_seed_start + seed_array.shape[1], y_seed_start + seed_array.shape[0]
-    #universe[y_seed_start:y_seed_end, x_seed_start:x_seed_end] = seed_array
-
-    for y in range(seed_array.shape[0]):
-        for x in range(seed_array.shape[1]):
-            universe[(i+y)%ny, (j+x)%nx] = seed_array[y, x]
+    universe = place_seed(universe, seed)
 
     return universe
-
 
 
 def add_glider(pos, universe):
