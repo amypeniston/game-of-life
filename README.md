@@ -80,25 +80,61 @@ python3 life.py --help
 
 ## Examples
 
-![Beacon](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/beacon.gif)
-
-
-![Glider](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/glider.gif)
-
-
-![Solid Square](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/solid_square.gif)
-
-
-![Infinite](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/infinite.gif)
-
+**Toad**
 
 ![Toad](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/toad.gif)
 
+```
+python3 life.py --universe-size "50,10" --start-seed "toad" --interval 500 --cmap "Reds"
+```
+
+**Beacon**
+
+![Beacon](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/beacon.gif)
+
+```
+python3 life.py --start-seed "beacon" --start-seed-pos "10,5" --universe-size "50,10" --interval 300 --cmap "spring"
+```
+
+**Solid Square**
+
+![Solid Square](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/solid_square.gif)
+
+```
+python3 life.py --cmap "YlGnBu" --start-seed "solid_square" --universe-size "50,10" --quality 80 --n-generations 8 --interval 200
+```
+
+**Glider**
+
+![Glider](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/glider.gif)
+
+```
+python3 life.py --start-seed "glider" --start-seed-pos "0,2" --universe-size "50,10" --cmap "Wistia" --n-generations 195 --interval 50
+```
+
+**Pentadecathlon**
 
 ![Pentadecathlon](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/pentadecathlon.gif)
 
+```
+python3 life.py --start-seed "pentadecathlon" --universe-size "50,11" --n-generations 20 --cmap "winter" --interval 150
+```
+
+**Infinite**
+
+![Infinite](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/infinite.gif)
+
+```
+python3 life.py --universe-size "50,10" --n-generations 150 --cmap "Greens"
+```
+
+**Mayhem**
 
 ![Mayhem](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/mayhem.gif)
+
+```
+python3 life.py --mayhem True --start-seed "blinker" --universe-size "50,10" --n-generations 100
+```
 
 ## Saving Animations
 
