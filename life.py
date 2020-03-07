@@ -1,8 +1,8 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import numpy as np
 import argparse
-
 
 def generation(universe):
     new_universe = np.copy(universe)
@@ -14,7 +14,7 @@ def generation(universe):
 
 
 def apply_rules(i, j, universe):
-    # Toroidal boundary conditions - i.e. screen wrapping
+    # Toroidal boundary conditions (cells wrap around the screen)
     ny = universe.shape[0]
     nx = universe.shape[1]
 
@@ -31,7 +31,11 @@ def apply_rules(i, j, universe):
     return universe[i, j]
 
 def random_universe(universe_size):
+
+    # Initialize an empty universe
     universe = np.zeros(universe_size)
+
+    # Set up an infinite seed
     seed_array = np.array([
         [1, 1, 1, 0, 1],
         [1, 0, 0, 0, 0],
@@ -39,11 +43,35 @@ def random_universe(universe_size):
         [0, 1, 1, 0, 1],
         [1, 0, 1, 0, 1],
     ])
-    x_seed_start, y_seed_start = 50, 50
-    x_seed_end, y_seed_end = x_seed_start + seed_array.shape[1], y_seed_start + seed_array.shape[0]
-    universe[y_seed_start:y_seed_end, x_seed_start:x_seed_end] = seed_array
+
+    seed_array = np.array([
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1]
+    ])
+
+    ny = universe.shape[0]
+    nx = universe.shape[1]
+
+    # Determine midpoint of the universe
+    x_mid, y_mid = int(nx/2), int(ny/2)
+
+    # Determine top left corner position
+    i = x_mid - int(seed_array.shape[0]/2)
+    j = y_mid - int(seed_array.shape[1]/2)
+
+    #x_seed_end, y_seed_end = x_seed_start + seed_array.shape[1], y_seed_start + seed_array.shape[0]
+    #universe[y_seed_start:y_seed_end, x_seed_start:x_seed_end] = seed_array
+
+    for y in range(seed_array.shape[0]):
+        for x in range(seed_array.shape[1]):
+            universe[(i+y)%ny, (j+x)%nx] = seed_array[y, x]
 
     return universe
+
 
 
 def add_glider(pos, universe):
@@ -93,7 +121,7 @@ def start_life(
                 universe = add_glider((xpos,ypos), universe)
         ims.append((plt.imshow(universe, cmap=cmap),))
 
-    universe_animation = animation.ArtistAnimation(fig, ims, interval=interval, blit=True, repeat=False)
+    universe_animation = animation.ArtistAnimation(fig, ims, blit=True, interval=interval, repeat=False)
 
     if save:
         universe_animation.save((str(filename) + ".gif"), writer="imagemagick")
@@ -138,12 +166,12 @@ if __name__ == "__main__":
     parser.add_argument("--cmap",
         type=str,
         default="inferno",
-        help="Color scheme. Defaults to inferno.")
+        help="Color scheme, in quotes. Defaults to inferno.")
 
     parser.add_argument("--save",
         type=bool,
         default=True,
-        help="Save animation? Defaults to False.")
+        help="Save animation? Defaults to True.")
 
     parser.add_argument("--filename",
         type=str,
