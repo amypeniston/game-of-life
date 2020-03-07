@@ -3,7 +3,7 @@
 
 # Game of Life 2.0
 
-  
+![Game of Life 2.0 Icon](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/icon.gif)
 
 Game of Life 2.0 is a python-based implementation of Conway's Game of Life -- with a novel ruleset! To generate an animation, run:
 
