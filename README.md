@@ -80,8 +80,22 @@ python3 life.py --help
 
 ## Examples
 
-*Coming soon!*
-  
+![Beacon](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/beacon.gif)
+
+
+![Glider]()
+
+
+![Infinite]()
+
+
+![Toad]()
+
+
+![Pentadecathlon]()
+
+
+![Mayhem]()
 
 ## Saving Animations
 
@@ -116,7 +130,7 @@ Download the appropriate Imagemagick version and follow instructions to install 
 Once you have downloaded Imagmagick, you can confirm the animation writers that are available to `matplotlib`:
 
 
-```
+```python
 import matplotlib.animation as animation
 
 animation.writers.list()
