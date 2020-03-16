@@ -102,9 +102,8 @@ def seeded_universe(universe_size, start_seed, start_seed_pos):
             Human friendly name for a seed array.
         start_seed_pos: str
             Tuple of integers representing the start seed position.
-    """    
+    """
 
-    # Initialize an empty universe
     universe = np.zeros((universe_size[1],universe_size[0]))
 
     # Set desired seed (fallback: infinite)
@@ -164,7 +163,7 @@ def create_life(
             True/false flag to toggle saving of the animation.
         filename: str
             Desired filename for output gif.
-    """    
+    """
 
     universe = seeded_universe(universe_size, start_seed, start_seed_pos)
 
