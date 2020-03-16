@@ -2,7 +2,9 @@
 
 ![Game of Life 2.0 Icon](https://raw.githubusercontent.com/amypeniston/game-of-life/master/assets/icon.gif)
 
-Game of Life 2.0 is a python-based implementation of Conway's Game of Life -- with a novel ruleset! To generate an animation, run:
+Game of Life 2.0 is a python-based implementation of Conway's Game of Life -- with added mayhem! This CLI can be used to generate interesting animations for use as banners or profile images.
+
+To generate an animation, run:
 
 
 ```
